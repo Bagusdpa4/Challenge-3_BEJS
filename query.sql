@@ -1,7 +1,7 @@
--- Create Database
+-- Create Database --
 CREATE DATABASE challenge3;
 
--- Create Table 
+-- Create Table --
 -- Table Nasabah
 CREATE TABLE nasabah (
     id BIGSERIAL PRIMARY KEY,
@@ -34,7 +34,7 @@ CREATE TABLE transaksi (
     akun_id INT NOT NULL
 );
 
--- CRUD
+-- CRUD --
 -- Create Data Nasabah
 INSERT INTO nasabah (nama_lengkap, alamat, no_telp, gender, pekerjaan) VALUES 
 ('Bagus Dwi Putra', 'Jl. Alam Pesona I, E2/27, Krian', '082229749462', 'Laki - Laki', 'Mahasiswa'),
@@ -67,3 +67,47 @@ INSERT INTO transaksi (no_rek_tujuan, nominal, tgl_transaksi, keterangan, akun_i
 ('8888888888', 500000.00, '2024-03-12', 'Pembayaran tagihan kartu kredit', 6),
 ('9999999999', 200000.00, '2024-03-12', 'Transfer ke rekening teman', 7),
 ('0000000000', 150000.00, '2024-03-11', 'Top up saldo e-wallet', 8);
+
+-- Create New Data --
+-- Create New Data Nasabah
+INSERT INTO nasabah (nama_lengkap, alamat, no_telp, gender, pekerjaan) VALUES 
+('testing', 'Jl. Ahmad Yani', '089924567890', 'Perempuan', 'Pedagang');
+
+-- Create New Data Nasabah
+INSERT INTO akun (email, username, password, no_rek, pin, saldo, nasabah_id) VALUES 
+('testing@gmail.com', 'testing1', 'testing123', '123123123', '123123', 200000.00, 6);
+
+-- Create New Data Nasabah
+INSERT INTO transaksi (no_rek_tujuan, nominal, tgl_transaksi, keterangan, akun_id) VALUES
+('321321321', 50000.00, '2024-04-24', 'testing data', 10);
+
+-- Read Data --
+-- Read Data Nasabah
+SELECT * FROM nasabah;
+
+-- Read Data Akun
+SELECT * FROM akun;
+
+-- Read Data Transaksi
+SELECT * FROM transaksi;
+
+-- Update Data --
+-- Update Data Nasabah
+UPDATE nasabah 
+SET pekerjaan = 'Mentor'
+WHERE id = 6;
+
+-- Update Data Akun
+UPDATE akun 
+SET pin = '999999'
+WHERE username = 'testing1';
+
+-- Delete Data --
+-- Delete Data Nasabah By id
+DELETE FROM nasabah WHERE id = 6;
+
+-- Delete Data Akun By nasabah_id
+DELETE FROM akun WHERE nasabah_id = 6;
+
+-- Delete Data Transaksi By akun_id
+DELETE FROM transaksi WHERE akun_id = 10;
